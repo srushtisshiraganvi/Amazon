@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>ShopEase | Your Online Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" th:href="@{/images/favicon.png}">
 </head>
 <body>
-    <h1>hello</h1>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🛒 ShopEase</div>
+    <nav>
+      <a th:href="@{/}">Home</a>
+      <a th:href="@{/products}">Products</a>
+      <a th:href="@{/cart}">Cart</a>
+      <a th:href="@{/about}">About</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products...">
+      <button>🔍</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to <span>ShopEase</span></h1>
+      <p>Your one-stop shop for electronics, fashion, and more!</p>
+      <a href="/products" class="btn-primary">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured">
+    <h2>🔥 Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card" th:each="product : ${products}">
+        <img th:src="@{/images/default-product.jpg}" alt="Product">
+        <h3 th:text="${product.name}">Product Name</h3>
+        <p th:text="'₹' + ${product.price}">Price</p>
+        <a th:href="@{'/product/' + ${product.id}}" class="btn-secondary">View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ShopEase. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
