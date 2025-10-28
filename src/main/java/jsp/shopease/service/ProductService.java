@@ -9,7 +9,6 @@ import jsp.shopease.repository.ProductRepository;
 
 @Component
 public class ProductService {
-
     private final ProductRepository repo;
 
     public ProductService(ProductRepository repo) {
