@@ -9,7 +9,6 @@ import jsp.shopease.service.ProductService;
 
 @Controller
 public class ProductController {
-
     @Autowired
     private ProductService productService;
 
@@ -18,7 +17,6 @@ public class ProductController {
         model.addAttribute("products", productService.getAllProducts());
         return "product"; // returns product.html
     }
-
     @GetMapping("/product/{id}")
     public String getProductById(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.getById(id));
